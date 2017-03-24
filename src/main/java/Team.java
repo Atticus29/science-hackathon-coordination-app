@@ -36,4 +36,39 @@ public class Team {
     return allTeams;
   }
 
+  public Map<String, Member> getMembers(){
+    return mTeamMembers;
+  }
+
+  public String getName(){
+    return mName;
+  }
+
+  public String getDescription(){
+    return mDescription;
+  }
+
+  public String getURL(){
+    return mURL;
+  }
+  public int getSizeLimit(){
+    return mSizeLimit;
+  }
+
+  public void setName(String name){
+    mName = name;
+  }
+
+  public void setDescription(String description){
+    mDescription = description;
+  }
+
+  public void setURL(String url){
+    mURL = url;
+  }
+
+  public void setSizeLimit(int max){
+    mSizeLimit = max;
+  }
+
 }
