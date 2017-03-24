@@ -63,4 +63,13 @@ public class Member {
   public void setLocation(String location){
     mLocation = location;
   }
+
+  public static Map<String, Member> getAllMembers(){
+    return allMembers;
+  }
+
+  public static Member findMember(String name){
+    return allMembers.get(name);
+  }
+
 }

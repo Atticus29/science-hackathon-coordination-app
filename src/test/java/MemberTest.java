@@ -78,4 +78,15 @@ public class MemberTest {
     assertEquals("Seattle", testMember.getLocation());
   }
 
+  @Test
+  public void allMembers_isAddingMultipleMembers_true(){
+    Member testMember2 = new Member("Amir", "http://www.amirIsAwesome.com", "Bud tender at the pot shop", "sql, fortran, BASIC, C, C++", "San Diego");
+    assertEquals(2, Member.getAllMembers().size());
+  }
+
+  @Test
+  public void findMember_returnsJanice_true(){
+    assertEquals("Janice", testMember.findMember("Janice").getName());
+  }
+
 }
