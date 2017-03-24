@@ -48,4 +48,34 @@ public class MemberTest {
     assertEquals("Portland", testMember.getLocation());
   }
 
+  @Test
+  public void setName_changesNameToRick_Rick(){
+    testMember.setName("Rick");
+    assertEquals("Rick", testMember.getName());
+  }
+
+  @Test
+  public void setURL_changesNameToRick_Rick(){
+    testMember.setURL("http://www.rickIsAwesome.com");
+    assertEquals("http://www.rickIsAwesome.com", testMember.getURL());
+  }
+
+  @Test
+  public void setWork_changesNameToRick_Rick(){
+    testMember.setWork("target");
+    assertEquals("target", testMember.getWork());
+  }
+
+  @Test
+  public void setLanguages_changesNameToRick_Rick(){
+    testMember.setLanguages("scala");
+    assertEquals("scala", testMember.getLanguages());
+  }
+
+  @Test
+  public void setLocation_changesNameToRick_Rick(){
+    testMember.setLocation("Seattle");
+    assertEquals("Seattle", testMember.getLocation());
+  }
+
 }

@@ -44,4 +44,23 @@ public class Member {
     return mLocation;
   }
 
+  public void setName(String name){
+    mName = name;
+  }
+
+  public void setURL(String url){
+  mURL = url;
+  }
+
+  public void setWork(String work){
+    mWork = work;
+  }
+
+  public void setLanguages(String languages){
+    mLanguages = languages;
+  }
+
+  public void setLocation(String location){
+    mLocation = location;
+  }
 }
