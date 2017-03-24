@@ -19,4 +19,29 @@ public class Member {
     mLocation = location;
     allMembers.put(mName, this);
   }
+
+  public static void clear(){
+    allMembers.clear();
+  }
+
+  public String getName(){
+    return mName;
+  }
+
+  public String getURL(){
+    return mURL;
+  }
+
+  public String getWork(){
+    return mWork;
+  }
+
+  public String getLanguages(){
+    return mLanguages;
+  }
+
+  public String getLocation(){
+    return mLocation;
+  }
+
 }
