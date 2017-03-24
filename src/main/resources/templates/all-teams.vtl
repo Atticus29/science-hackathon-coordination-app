@@ -9,6 +9,10 @@
         <div class="card">
           <!-- <div class="panel-header"> -->
             <div class="card-header primary-color white-text">
+              <h3>Team:</h3>
+              <h4>$team.getName()</h4>
+              <h3>Description:</h3>
+              <h4 class="card-text">$team.getDescription()</h4>
               <form action="/teams/$team.getName()" method="get">
                 <input type="hidden" name="teamIdentifier" value="$team.getName()">
                 <button type="submit" class="btn btn-info" name="button">See More Details</button>
@@ -19,7 +23,7 @@
             </div>
           <!-- </div> -->
           <div class="card-block">
-            <h4 class="card-text">$team.getDescription()</h4>
+
           </div>
         </div>
       </div>

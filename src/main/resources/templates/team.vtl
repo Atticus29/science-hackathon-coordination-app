@@ -1,11 +1,11 @@
 <!-- team.vtl -->
-<h3>Team: $team.getName()</h3>
+<h3>Team:</h3> <h4>$team.getName()</h4>
 <hr>
 <h4>Description:</h4>
-<h4>$team.getDescription()</h4>
-<h4>
+<h5>$team.getDescription()</h5>
+<h5>
   <a href="$team.getURL()">$team.getName()'s Website</a>
-</h4>
+</h5>
 #if ($team.getMemberCount() > 0)
   #set ($members =  $team.getMembers())
   <h5>Members:</h5>

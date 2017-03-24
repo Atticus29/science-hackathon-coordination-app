@@ -93,5 +93,13 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/teams/:teamID/members/:memberID", (request, response) ->{
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
+      model.put("member",Team.getAllTeams().get(request.queryParams(":teamID")).getMembers().get(request.queryParams(":memberID")));
+      model.put("template", "templates/member.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
