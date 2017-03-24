@@ -27,8 +27,10 @@ public class App {
       String name = request.queryParams("team-name");
       String description = request.queryParams("team-description");
       String url = request.queryParams("team-url");
+      // System.out.println(request.queryParams());
       int teamSizeLimit = Integer.parseInt(request.queryParams("team-size"));
       Team newTeam = new Team(name, description, url, teamSizeLimit);
+      // System.out.println("newTeam made? " + (newTeam instanceof Team));
       // System.out.println(Team.allTeams());
       model.put("teams", Team.getAllTeams());
       return new ModelAndView(model, layout);
@@ -39,6 +41,21 @@ public class App {
       model.put("template", "templates/all-teams.vtl");
       // System.out.println(Team.allTeams());
       // model.put("teams", Team.allTeams());
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/teams/:teamID", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/team.vtl");
+      model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/teams/:teamID/members/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/member-form.vtl");
+      model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

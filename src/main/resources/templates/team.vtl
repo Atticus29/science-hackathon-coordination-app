@@ -1,0 +1,23 @@
+<!-- team.vtl -->
+$team.getName()
+$team.getDescription()
+<a href="$team.getURL()">$team.getName()'s Website</a>
+#if ($team.getMemberCount() > 0)
+  #set ($members =  $team.getMembers())
+  Members:
+  <ul>
+    #foreach ($member in $members)
+      <li>
+        <a href="/teams/$team.getName()/members/$member.getName()">$member.getName()</a>
+      </li>
+    #end
+  </ul>
+#end
+
+#if ($team.getMemberCount() < $team.getSizeLimit())
+<a href="/teams/$team.getName()/members/new" class="btn btn-success">Add a New Member</a>
+#end
+
+<a href="/teams" class="btn btn-success">Back to All Teams</a>
+<a href="/" class="btn btn-success">Home</a>
+<!-- team.vtl -->
