@@ -20,7 +20,7 @@
 
 #if ($team.getMemberCount() < $team.getSizeLimit())
 <form action="/teams/$team.getName()/members/new" method="get">
-  <input type="hidden" name="team" value="$team">
+  <input type="hidden" name="teamID" value="$team.getName()">
   <button type="submit" class="btn btn-success" name="button">Add a New Member</button>
   <!-- <a href="/teams/$team.getName()/members/new" class="btn btn-success">Add a New Member</a> -->
 </form>

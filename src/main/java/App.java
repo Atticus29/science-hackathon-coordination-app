@@ -41,7 +41,9 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/all-teams.vtl");
       // System.out.println(Team.allTeams());
-      // model.put("teams", Team.allTeams());
+      // if(Team.getAllTeams()){
+      model.put("teams", Team.getAllTeams());
+      // }
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -77,17 +79,17 @@ public class App {
       String memberLanguages = request.queryParams("member-languages");
       String memberLocation = request.queryParams("member-location");
       Member newMember = new Member(memberName, memberURL, memberWork, memberLanguages, memberLocation);
-      // Team.getAllTeams().get(request.queryParams("team")).addMember(newMember);
-      request.queryParams("team").addMember(newMember);
-      // model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
-      model.put("team",request.queryParams("team"));
+      Team.getAllTeams().get(request.queryParams("teamID")).addMember(newMember);
+      // request.queryParams("team").addMember(newMember);
+      model.put("team",Team.getAllTeams().get(request.queryParams("teamID")));
+      // model.put("team",request.queryParams("team"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/teams/:teamID/members/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/member-form.vtl");
-      model.put("team",Team.getAllTeams().get(request.queryParams("team")));
+      model.put("team",Team.getAllTeams().get(request.queryParams("teamID")));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

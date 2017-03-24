@@ -1,5 +1,6 @@
 <!-- member-form.vtl -->
 <form action="/teams/$team.getName()" method="post">
+  <!-- <h3>/teams/$team.getName() works</h3> -->
   <label for="member-name">Name:</label>
   <input type="text" name="member-name" class="form-control">
   <label for="member-url">Personal Website URL:</label>
@@ -10,7 +11,7 @@
   <input type="text" name="member-languages" class="form-control">
   <label for="member-location">Current City of Residence:</label>
   <input type="text" name="member-location" class="form-control">
-  <input type="hidden" name="team" value="$team">
+  <input type="hidden" name="teamID" value="$team.getName()">
   <button type="submit" name="button" class="btn btn-success">Add</button>
 </form>
 

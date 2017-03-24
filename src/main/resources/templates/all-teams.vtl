@@ -2,27 +2,32 @@
 <div class="jumbotron">
   <h3>Science Hack-a-Thon Teams</h3>
 </div>
-#foreach ($team in $teams)
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <!-- <div class="panel-header"> -->
-          <div class="card-header primary-color white-text">
-            <form action="/teams/$team.getName()" method="get">
-              <input type="hidden" name="teamIdentifier" value="$team.getName()">
-              <button type="submit" class="btn btn-info" name="button">See More Details</button>
-            </form>
-            <!-- <a href="/teams/$team.getName()" >
-              <h2>$team.getName()</h2>
-            </a> -->
+#if ($teams.size()>0)
+  #foreach ($team in $teams)
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <!-- <div class="panel-header"> -->
+            <div class="card-header primary-color white-text">
+              <form action="/teams/$team.getName()" method="get">
+                <input type="hidden" name="teamIdentifier" value="$team.getName()">
+                <button type="submit" class="btn btn-info" name="button">See More Details</button>
+              </form>
+              <!-- <a href="/teams/$team.getName()" >
+                <h2>$team.getName()</h2>
+              </a> -->
+            </div>
+          <!-- </div> -->
+          <div class="card-block">
+            <h4 class="card-text">$team.getDescription()</h4>
           </div>
-        <!-- </div> -->
-        <div class="card-block">
-          <h4 class="card-text">$team.getDescription()</h4>
         </div>
       </div>
     </div>
-  </div>
+  #end
+#else
+  <p>No teams have been created yet!</p>
+  <a href="/teams/new">Be the first</a>
 #end
 
 <!-- all-teams.vtl -->
