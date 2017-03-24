@@ -3,6 +3,7 @@ import java.util.HashMap;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
+import java.util.regex.*;
 
 public class App {
   public static void main(String[] args) {
@@ -47,15 +48,46 @@ public class App {
     get("/teams/:teamID", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/team.vtl");
-      model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
+      // System.out.println("team ID is " + ":teamID");
+      System.out.println("Params are: " + request.queryParams());
 
+      // Some failed regular expression stuff
+      // _____________________________________________
+      // String fullURL = request.url();
+      // Pattern teamIDPattern = Pattern.compile(".*teams\\/(.*)");
+      // Matcher matcher = teamIDPattern.matcher(fullURL);
+      // String teamIdentifier = matcher.group(1);
+      // System.out.println("teamIdentifier is " + teamIdentifier);
+
+       model.put("team",Team.getAllTeams().get(request.queryParams("teamIdentifier")));
+
+      //  Perry, it's not clear to me why this didn't work
+      // ______________________________________________________
+      //  model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
+
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/teams/:teamID", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/team.vtl");
+      String memberName = request.queryParams("member-name");
+      String memberURL = request.queryParams("member-url");
+      String memberWork = request.queryParams("member-work");
+      String memberLanguages = request.queryParams("member-languages");
+      String memberLocation = request.queryParams("member-location");
+      Member newMember = new Member(memberName, memberURL, memberWork, memberLanguages, memberLocation);
+      // Team.getAllTeams().get(request.queryParams("team")).addMember(newMember);
+      request.queryParams("team").addMember(newMember);
+      // model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
+      model.put("team",request.queryParams("team"));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/teams/:teamID/members/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("template", "templates/member-form.vtl");
-      model.put("team",Team.getAllTeams().get(request.queryParams(":teamID")));
+      model.put("team",Team.getAllTeams().get(request.queryParams("team")));
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

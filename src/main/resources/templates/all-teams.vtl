@@ -8,10 +8,13 @@
       <div class="card">
         <!-- <div class="panel-header"> -->
           <div class="card-header primary-color white-text">
-            <h3>testing</h3>
-            <a href="/teams/$team.getName()" >
+            <form action="/teams/$team.getName()" method="get">
+              <input type="hidden" name="teamIdentifier" value="$team.getName()">
+              <button type="submit" class="btn btn-info" name="button">See More Details</button>
+            </form>
+            <!-- <a href="/teams/$team.getName()" >
               <h2>$team.getName()</h2>
-            </a>
+            </a> -->
           </div>
         <!-- </div> -->
         <div class="card-block">

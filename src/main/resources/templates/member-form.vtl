@@ -1,0 +1,17 @@
+<!-- member-form.vtl -->
+<form action="/teams/$team.getName()" method="post">
+  <label for="member-name">Name:</label>
+  <input type="text" name="member-name" class="form-control">
+  <label for="member-url">Personal Website URL:</label>
+  <input type="url" name="member-url" class="form-control">
+  <label for="member-work">Current Job:</label>
+  <input type="text" name="member-work" class="form-control">
+  <label for="member-languages">Programming Languages Known:</label>
+  <input type="text" name="member-languages" class="form-control">
+  <label for="member-location">Current City of Residence:</label>
+  <input type="text" name="member-location" class="form-control">
+  <input type="hidden" name="team" value="$team">
+  <button type="submit" name="button" class="btn btn-success">Add</button>
+</form>
+
+<!-- member-form.vtl -->

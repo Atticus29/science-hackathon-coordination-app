@@ -1,10 +1,14 @@
 <!-- team.vtl -->
-$team.getName()
-$team.getDescription()
-<a href="$team.getURL()">$team.getName()'s Website</a>
+<h3>Team: $team.getName()</h3>
+<hr>
+<h4>Description:</h4>
+<h4>$team.getDescription()</h4>
+<h4>
+  <a href="$team.getURL()">$team.getName()'s Website</a>
+</h4>
 #if ($team.getMemberCount() > 0)
   #set ($members =  $team.getMembers())
-  Members:
+  <h5>Members:</h5>
   <ul>
     #foreach ($member in $members)
       <li>
@@ -15,9 +19,16 @@ $team.getDescription()
 #end
 
 #if ($team.getMemberCount() < $team.getSizeLimit())
-<a href="/teams/$team.getName()/members/new" class="btn btn-success">Add a New Member</a>
+<form action="/teams/$team.getName()/members/new" method="get">
+  <input type="hidden" name="team" value="$team">
+  <button type="submit" class="btn btn-success" name="button">Add a New Member</button>
+  <!-- <a href="/teams/$team.getName()/members/new" class="btn btn-success">Add a New Member</a> -->
+</form>
 #end
 
-<a href="/teams" class="btn btn-success">Back to All Teams</a>
+<!-- <form class="" action="index.html" method="get"> -->
+  <!-- <input type="hidden" name="team" value="$team"> -->
+  <a href="/teams" class="btn btn-success">Back to All Teams</a>
+<!-- </form> -->
 <a href="/" class="btn btn-success">Home</a>
 <!-- team.vtl -->
