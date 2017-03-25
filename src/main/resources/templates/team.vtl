@@ -12,7 +12,11 @@
   <ul>
     #foreach ($member in $members)
       <li>
-        <a href="/teams/$team.getName()/members/$member.getName()">$member.getName()</a>
+        <form action="/teams/$team.getName()/members/$member.getName()" method="get">
+          <input type="hidden" name="memberID" value="$member.getName()">
+          <input type="hidden" name="teamID" value="$team.getName()">
+          <button type="submit" class="invisible-button" name="button">$member.getName()</button>
+        </form>
       </li>
     #end
   </ul>

@@ -2,12 +2,16 @@
 <h4>Name:</h4>
 <h5>$member.getName()</h5>
 <h4>Personal Website:</h4>
-<h5>$member.getURL()</h5>
+<h5 class="link">$member.getURL()</h5>
 <h4>Current Employment:</h4>
 <h5>$member.getWork()</h5>
 <h4>Language Competencies:</h4>
 <h5>$member.getLanguages()</h5>
 <h4>Current Location:</h4>
 <h5>$member.getLocation()</h5>
-<a href="/teams/$team.getName()" class="btn btn-success">Back to Team</a>
+<form action="/teams/$team.getName()" method="get">
+  <input type="hidden" name="teamIdentifier" value="$team.getName()">
+  <button type="submit" class="invisible-button" name="button">Back to Team</button>
+</form>
+<!-- <a href="/teams/$team.getName()" class="btn btn-success">Back to Team</a> -->
 <!-- member.vtl -->
